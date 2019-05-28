@@ -1,0 +1,20 @@
+{
+  "name": "ts-nodekeras",
+  "version": "0.0.1",
+  "main": "miservidor.ts",
+  "engines": {
+    "node": ">=10.15.3"
+  },
+  "devDependencies": {
+    "node-gyp": "^4.0.0",
+    "@tensorflow/tfjs-node": "^1.1.2"    
+  },
+  "dependencies": {
+    "canvas": "^2.5.0",
+    "performance-now": "^2.1.0",
+    "rollup": "^1.12.3",
+    "sharp": "^0.21.3",
+    "typescript": "^3.4.5",
+    "ts-node": "^8.1.0"    
+  }
+}

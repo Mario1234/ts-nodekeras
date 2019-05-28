@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>TensorFlow.js: Utilizando una red MobileNet pre-entrenada</title>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<style>
+  .contenedor-predic {
+    margin-bottom: 20px;
+  }
+  .contenedor-predic > div {
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: top;
+  }
+  .fila {
+    display: table-row;
+  }
+  .celda {
+    display: table-cell;
+    padding-right: 20px;
+  }
+  #id-contenedor-archivos {
+    margin-bottom: 20px;
+  }
+</style>
+
+<body>
+  <div class='tfjs-example-container'>
+    <section class='title-area'>
+      <h1>TensorFlow.js: Utilizando una red MobileNet pre-entrenada</h1>
+    </section>
+
+    <section>
+      <p class='section-head'>Descripcion</p>
+      <p>
+        Esta prueba utiliza un modelo de red neuronal MobileNet_25_224 pre-entrenada de Keras que puedes encontrar
+        <a href='https://github.com/fchollet/deep-learning-models/releases/download/v0.6/mobilenet_2_5_224_tf.h5'>aqui</a>.
+
+        No esta entrenada para reconocer rostros humanos. Para conseguir un mejor rendimiento, sube imagenes de objetos
+        como piano, tazas de cafe, botellas, etc. Puedes ver todos los tipos de objetos para los que se le ha entrenado a reconocer en <a
+          href='https://github.com/tensorflow/tfjs-examples/blob/master/mobilenet/imagenet_classes.js'>imagenet_classes.js</a>.
+      </p>
+    </section>
+
+    <section>
+      <p class='section-head'>Estado</p>
+      <div id='id-estado'></div>
+    </section>
+
+    <section id='idSeccionPrincipal'>
+      <p class='section-head'>Salida del Modelo</p>
+
+      <div id='id-contenedor-archivos'>
+        Subir una imagen: <input type='file' id='idArchivos' name='nameArchivos' multiple />
+      </div>
+
+      <div id='id-predicciones'></div>
+
+    </section>
+    
+    <button id='idBoton1' onclick='pideClasificar()'>Clasifica las imagenes</button>
+    <script type='text/javascript' src='paginaPrincipal.js'></script>
+  </div>
+</body>
+</html>
