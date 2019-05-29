@@ -6,7 +6,8 @@
     "node": ">=10.x"
   },
   "scripts": {
-    "start": "ts-node miservidor.ts"
+    "start": "ts-node miservidor.ts",
+	"preinstall": "npm install node-gyp@latest"
   },
   "dependencies": {   
 	"typescript": "^3.4.5",
