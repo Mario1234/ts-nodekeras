@@ -8,6 +8,11 @@ export class FuncsRedNeur {
   private TAMANIO_IMAGEN: number = 224;//120
   private TOPX_PREDICCIONES: number = 10;
   private modeloMobileNet: tensorflow.LayersModel;
+  private b_modeloCargado : boolean;
+  
+  constructor() {
+    this.b_modeloCargado = false;
+  }
 
   //metodo general que recibe una imagen y la devuelve clasificada utilizando mobilenet con tensorflow
   public async predecirConModeloMobilenet(s_imagenBase64: string, anfitrionYpuerto: string):Promise<Object[]>{
@@ -20,14 +25,18 @@ export class FuncsRedNeur {
     imagen.src=s_imagenBase64;
     ctx.drawImage(imagen, 0, 0, ancho, alto);   
     let elementoCanvas : HTMLCanvasElement = ctx.canvas;
-    //el servidor pide la matriz de la red neuronal a si mismo
-    console.log('Cargando modelo...');
-    let camino : string = 'http://' + anfitrionYpuerto + '/model.json';
-    console.log(camino);
-    this.modeloMobileNet = await tensorflow.loadLayersModel(camino);
-    console.log('Modelo cargado');
-    //calienta el modelo
-    this.modeloMobileNet.predict(tensorflow.zeros([1, this.TAMANIO_IMAGEN, this.TAMANIO_IMAGEN, 3]));//.dispose();
+    //la primera peticion de prediccion carga el modelo, las siguientes utilizan el que esta cargado
+    if(!b_modeloCargado){
+      //el servidor pide la matriz de la red neuronal a si mismo
+      console.log('Cargando modelo...');
+      let camino : string = 'http://' + anfitrionYpuerto + '/model.json';
+      console.log(camino);
+      this.modeloMobileNet = await tensorflow.loadLayersModel(camino);
+      console.log('Modelo cargado');
+      this.b_modeloCargado=true;
+      //calienta el modelo
+      this.modeloMobileNet.predict(tensorflow.zeros([1, this.TAMANIO_IMAGEN, this.TAMANIO_IMAGEN, 3]));//.dispose();
+    }
     //predice, se le pasa el canvas con la imagen pintada
     return this.predecir(elementoCanvas);
   }
