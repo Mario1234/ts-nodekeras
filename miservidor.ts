@@ -3,7 +3,7 @@ import * as tradURL from "url";
 import * as sistemaArchivos from "fs";
 import {FuncsRedNeur} from "./funcsredneuronal";
 let ahora = require("performance-now");
-let puerto : number = 9615;
+let puerto : number = process.env.PORT;//9615;
 let listasImagenes : Object = {};//string[][];
 
 //<grupo de solicitud> es el conjunto de peticiones de subidas de imagenes y de la peticion de prediccion para clasificar dichas imagenes
