@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "miservidor.ts",
   "engines": {
-    "node": ">=10.x"
+    "node": ">=10.15.3 <10.16.0"
   },
   "scripts": {
     "start": "ts-node miservidor.ts",
