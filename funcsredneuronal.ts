@@ -26,7 +26,7 @@ export class FuncsRedNeur {
     ctx.drawImage(imagen, 0, 0, ancho, alto);   
     let elementoCanvas : HTMLCanvasElement = ctx.canvas;
     //la primera peticion de prediccion carga el modelo, las siguientes utilizan el que esta cargado
-    if(!b_modeloCargado){
+    if(!this.b_modeloCargado){
       //el servidor pide la matriz de la red neuronal a si mismo
       console.log('Cargando modelo...');
       let camino : string = 'http://' + anfitrionYpuerto + '/model.json';
